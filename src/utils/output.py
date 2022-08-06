@@ -1,4 +1,3 @@
-
 from classes import Human
 from faker import Faker
 import matplotlib as mpl
@@ -13,7 +12,8 @@ for i in range(10_000):
     a.append(np.random.normal())
 
 
-ax.scatter([i for i in range(10_000)], a);  # Plot some data on the axes.
+ax.scatter([i for i in range(10_000)], a)
+# Plot some data on the axes.
 plt.show()
 
 
@@ -22,5 +22,6 @@ for i in range(10_000):
     a.append(np.random.lognormal())
 
 
-fig.scatter([i for i in range(10_000)], a);  # Plot some data on the axes.
+fig.scatter([i for i in range(10_000)], a)
+# Plot some data on the axes.
 plt.show()
