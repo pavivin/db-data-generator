@@ -1,7 +1,7 @@
 from datetime import date
 from decimal import Decimal
 from string import digits, printable
-from typing import Any, Optional, List
+from typing import Any, List, Optional
 
 from pydantic import BaseModel, Field
 

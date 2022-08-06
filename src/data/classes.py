@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from faker import Faker
+
 fake = Faker('en_US')
 
 

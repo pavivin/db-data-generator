@@ -1,7 +1,7 @@
-from faker import Faker
-import matplotlib.pyplot as plt
-
 from abc import ABC, abstractmethod
+
+import matplotlib.pyplot as plt
+from faker import Faker
 
 fig, ax = plt.subplots()
 

@@ -1,7 +1,6 @@
 from utils import base_types, data_generator
 from utils.models import TableBase, TableColumn
 
-
 table = TableBase(
     table_name='people',
     rows_to_generate=1000,

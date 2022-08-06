@@ -1,7 +1,7 @@
 from enum import Enum
-from faker import Faker
-
 from typing import NamedTuple
+
+from faker import Faker
 
 fake = Faker()
 
