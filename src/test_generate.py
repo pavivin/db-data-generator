@@ -4,13 +4,15 @@ from utils.constants import OutputTypes
 from utils import base_types, data_generator
 from utils.models import TableBase, TableColumn
 
-import json # TODO: orjson
+import json  # TODO: orjson
 
 with open('src/data/statham.json') as f:
-    config = json.loads(f.read())
+    config: dict[str, dict[str, dict]] = json.loads(f.read())
 
-for item in config['tables']:
-    ...
+# for tablename, column in config['tables'].items():
+#     [TableBase]
+#     for column_name, column_config in column.items():
+#         ...
 
 table = TableBase(
     table_name='people',
@@ -42,7 +44,7 @@ table = TableBase(
 )
 
 
-generator = data_generator.TableDataGeneratorService(table)
+generator = data_generator.TableDataGeneratorService([table])
 start_date = datetime.now()
 
 generator.generate_table_data()
