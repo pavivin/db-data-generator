@@ -1,24 +1,11 @@
 import random
 import string
-
 from datetime import date, datetime
 from decimal import Decimal
+from typing import Callable
 
 from . import base_types
 from . import models
-
-
-import base_types
-from typing import Callable
-from data_generator import TableDataGeneratorService as TDGS
-
-generate_type = {
-    "str": TDGS._generate_fake_str_data,
-    "datetime": TDGS._generate_fake_timestamp_data,
-    "date": TDGS._generate_fake_date_data,
-    "float": TDGS._generate_fake_decimal_data,
-    "int": TDGS._generate_fake_int_data,
-}
 
 
 class TableDataGeneratorService:
@@ -106,3 +93,12 @@ class TableDataGeneratorService:
     def _generate_fake_timestamp_data(row_config: base_types.BaseTimestampType) -> datetime:
         """Генерация даты/времени по конфигурации"""
         pass  # TODO
+
+
+generate_type = {
+    "str": TableDataGeneratorService._generate_fake_str_data,
+    "datetime": TableDataGeneratorService._generate_fake_timestamp_data,
+    "date": TableDataGeneratorService._generate_fake_date_data,
+    "float": TableDataGeneratorService._generate_fake_decimal_data,
+    "int": TableDataGeneratorService._generate_fake_int_data,
+}

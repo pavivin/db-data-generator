@@ -9,7 +9,7 @@ table = TableBase(
     columns=[
         TableColumn(
             column_name="name",
-            column_config=base_types.BaseStrType(
+            column_type=base_types.BaseStrType(
                 config=base_types.BaseStrTypeConfig(
                     values_select=[
                         base_types.ValuesFrequencyConfig(value="test1"),
@@ -19,7 +19,7 @@ table = TableBase(
                 )
             ),
         ),
-        TableColumn(column_name="value", column_config=base_types.BaseIntType(config=base_types.BaseIntTypeConfig())),
+        TableColumn(column_name="value", column_type=base_types.BaseIntType(config=base_types.BaseIntTypeConfig())),
     ],
 )
 
