@@ -6,14 +6,19 @@ from typing import Callable
 
 from faker import Faker
 
-from . import base_types
+from data.generate_type import CLASSES_TO_METHODS
+from utils import base_types
+
+
 from . import models
 
+
+HINTING_TO_CLASSES = {}
 
 class TableDataGeneratorService:
     """Сервис для генерации данных"""
 
-    def __init__(self, config: models.TableBase, generate_type: dict[str, Callable]) -> None:
+    def __init__(self, config: models.TableBase, generate_type: dict[str, Callable] = CLASSES_TO_METHODS) -> None:
         self._config = config
         self._generate_type = generate_type
 
@@ -31,7 +36,8 @@ class TableDataGeneratorService:
         row = ''
 
         for col in self._config.columns:
-            self._generate_type[col.column_type]
+            row += self._generate_type[type(col.column_config)](col.column_config)
+        return row
 
     @staticmethod
     def _generate_fake_str_data(row_config: base_types.BaseStrType) -> str:
