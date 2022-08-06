@@ -1,6 +1,6 @@
 from typing import Any, Optional, List
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class ValuesFrequencyConfig(BaseModel):
@@ -45,31 +45,31 @@ class BaseTimestampTypeConfig(BaseModel):
     # TODO
 
 
-class BaseStrType:
-    """Базовый класс str для генерации данных"""
-    def __init__(self, config: BaseStrTypeConfig) -> None:
-        self.config = config
+# class BaseStrType:
+#     """Базовый класс str для генерации данных"""
+#     def __init__(self, config: BaseStrTypeConfig) -> None:
+#         self.config = config
 
 
-class BaseIntType:
-    """Базовый класс int для генерации данных"""
-    def __init__(self, ) -> None:
-        pass
+# class BaseIntType:
+#     """Базовый класс int для генерации данных"""
+#     def __init__(self, ) -> None:
+#         pass
 
 
-class BaseDecimalType:
-    """Базовый класс decimal для генерации данных"""
-    def __init__(self, ) -> None:
-        pass
+# class BaseDecimalType:
+#     """Базовый класс decimal для генерации данных"""
+#     def __init__(self, ) -> None:
+#         pass
     
     
-class BaseDateType:
-    """Базовый класс date для генерации данных"""
-    def __init__(self, ) -> None:
-        pass
+# class BaseDateType:
+#     """Базовый класс date для генерации данных"""
+#     def __init__(self, ) -> None:
+#         pass
 
 
-class BaseTimestampType:
-    """Базовый класс timestamp для генерации данных"""
-    def __init__(self, ) -> None:
-        pass
+# class BaseTimestampType:
+#     """Базовый класс timestamp для генерации данных"""
+#     def __init__(self, ) -> None:
+#         pass
