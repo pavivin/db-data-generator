@@ -7,6 +7,7 @@ fig, ax = plt.subplots()
 
 fake = Faker()
 
+
 class AbcBenchmark(ABC):
     @abstractmethod
     def calculate(self):

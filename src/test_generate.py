@@ -4,28 +4,23 @@ from utils import base_types
 
 
 table = TableBase(
-    table_name='people',
+    table_name="people",
     rows_to_generate=1000,
     columns=[
         TableColumn(
-            column_name='name',
+            column_name="name",
             column_config=base_types.BaseStrType(
                 config=base_types.BaseStrTypeConfig(
                     values_select=[
-                        base_types.ValuesFrequencyConfig(
-                            value='test1'
-                        ),
-                        base_types.ValuesFrequencyConfig(
-                            value='test2'
-                        ),
-                        base_types.ValuesFrequencyConfig(
-                            value='test3'
-                        ),
+                        base_types.ValuesFrequencyConfig(value="test1"),
+                        base_types.ValuesFrequencyConfig(value="test2"),
+                        base_types.ValuesFrequencyConfig(value="test3"),
                     ]
                 )
-            )
-        )
-    ]
+            ),
+        ),
+        TableColumn(column_name="value", column_config=base_types.BaseIntType(config=base_types.BaseIntTypeConfig())),
+    ],
 )
 
 
