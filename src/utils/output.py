@@ -1,9 +1,6 @@
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 from faker import Faker
-
-from classes import Human
 
 fig, ax = plt.subplots()  # Create a figure containing a single axes.
 

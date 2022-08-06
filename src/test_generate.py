@@ -4,6 +4,14 @@ from utils.constants import OutputTypes
 from utils import base_types, data_generator
 from utils.models import TableBase, TableColumn
 
+import json # TODO: orjson
+
+with open('src/data/statham.json') as f:
+    config = json.loads(f.read())
+
+for item in config['tables']:
+    ...
+
 table = TableBase(
     table_name='people',
     output_format=OutputTypes.CSV,
