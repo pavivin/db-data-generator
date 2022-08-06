@@ -2,14 +2,16 @@
   "tables": {
     "tablename": {
       "name": {
-        "column_config": "base_types.BaseStrType",
-        "values_select": [
-          {
-            "values_frequency": {
-              "value": ""
+        "column_config": {
+          "values_select": [
+            {
+              "values_frequency": {
+                "value": ""
+              }
             }
-          }
-        ]
+          ],
+          "column_type": "str"
+        }
       }
     }
   }

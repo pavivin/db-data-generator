@@ -9,6 +9,14 @@ GENERATE_TYPE = {
     "int": TG.generate_fake_int_data,
 }
 
+HINTING_TO_CLASSES = {
+    "str": base_types.BaseStrType,
+    "datetime": base_types.BaseTimestampType,
+    "date": base_types.BaseDateType,
+    "float": base_types.Decimal,
+    "int": base_types.BaseIntType,
+}
+
 CLASSES_TO_METHODS = {
     base_types.BaseStrType: TG.generate_fake_str_data,
     base_types.BaseTimestampType: TG.generate_fake_timestamp_data,

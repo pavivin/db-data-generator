@@ -6,9 +6,6 @@ from data.generate_type import CLASSES_TO_METHODS
 from . import models
 from . import constants
 
-HINTING_TO_CLASSES = {}
-
-
 class TableDataGeneratorService:
     """Сервис для генерации данных"""
 
@@ -27,7 +24,7 @@ class TableDataGeneratorService:
         if config.output_format == constants.OutputTypes.JSON:
             work_func = self._generate_json_row
 
-            result_data = f'[{self._generate_output(work_func=work_func)}]'
+            result_data = f'[{self._generate_output(work_func=work_func, config=config)}]'
 
             for i in range(1, 7):
                 if result_data[len(result_data) - i] == ',':
@@ -55,7 +52,7 @@ class TableDataGeneratorService:
     def _generate_json_row(self, config: models.TableBase) -> dict:
         """Генерация json строки"""
         row = {
-            row[col.column_name]: self._generate_type[type(col.column_config)](col.column_config)
+            col.column_name: self._generate_type[type(col.column_config)](col.column_config)
             for col in config.columns
         }
 
