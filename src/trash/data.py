@@ -4,7 +4,7 @@ import numpy as np
 from faker import Faker
 
 # create some fake data
-fake = Faker()
+fake = Faker('en_US')
 
 # function to create a dataframe with fake values for our workers
 def make_workers(num):
