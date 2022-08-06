@@ -1,7 +1,7 @@
 import datetime
 import random
 import string
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal
 
 from faker import Faker
@@ -72,14 +72,14 @@ class TypeGenerator:
 
         elif config.values_select:
             selected_value = random.choice(config.values_select)
-            return selected_value.value
+            return str(selected_value.value)
 
         elif config.mask:
             generated_value = config.mask.replace('#', random.choice(row_config.alphabet))
-            return generated_value
+            return str(generated_value)
 
         else:
-            return random.choice(range(config.min_value, config.max_value))
+            return str(Decimal(random.randrange(155, 389)) / 100)
 
     @staticmethod
     def generate_fake_date_data(row_config: base_types.BaseDateType) -> date:
@@ -91,7 +91,7 @@ class TypeGenerator:
                 start_date for start_date in [config.start_date, date(1970, 1, 1)] if start_date is not None
             ),
             end_date=next(end_date for end_date in [config.end_date, date.today()] if end_date is not None),
-        )
+        ).isoformat()
 
     @staticmethod
     def generate_fake_timestamp_data(row_config: base_types.BaseTimestampType) -> datetime:
@@ -105,4 +105,4 @@ class TypeGenerator:
                 if start_date is not None
             ),
             end_date=next(end_date for end_date in [config.end_date, datetime.today()] if end_date is not None),
-        )
+        ).isoformat()
