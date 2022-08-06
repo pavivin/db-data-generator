@@ -1,3 +1,5 @@
+from datetime import date
+from decimal import Decimal
 from string import digits, printable
 from typing import Any, Optional, List
 
@@ -38,26 +40,46 @@ class BaseIntTypeConfig(BaseModel):
 
     unique: bool = False
 
-    min_value: Optional[int] = 1
-    max_value: Optional[int] = 100
+    min_value: Optional[int] = -1000
+    max_value: Optional[int] = 1000
 
 
 class BaseDecimalTypeConfig(BaseModel):
     """Конфиг для базового типа дробного значения"""
 
-    # TODO
+    faker_type: Optional[str]
+
+    values_select: Optional[List[ValuesFrequencyConfig]]
+
+    mask: Optional[str]
+
+    unique: bool = False
+
+    min_value: Optional[Decimal] = Decimal(-1000)
+    max_value: Optional[Decimal] = Decimal(1000)
+
+    min_fraction_numbers: Optional[int] = 0
+    max_fraction_numbers: Optional[int] = 5
 
 
 class BaseDateTypeConfig(BaseModel):
     """Конфиг для базового типа дата"""
 
-    # TODO
+    DEFAULT_TYPE: str = 'date_between'
+    faker_type: str = DEFAULT_TYPE
+
+    start_date: Optional[date]
+    end_date: Optional[date]
 
 
 class BaseTimestampTypeConfig(BaseModel):
-    """Конфиг для базового типа дада/время"""
+    """Конфиг для базового типа дата/время"""
 
-    # TODO
+    DEFAULT_TYPE: str = 'date_time_between'
+    faker_type: str = DEFAULT_TYPE
+
+    start_date: Optional[date]
+    end_date: Optional[date]
 
 
 class BaseStrType:
@@ -79,25 +101,20 @@ class BaseIntType:
 class BaseDecimalType:
     """Базовый класс decimal для генерации данных"""
 
-    def __init__(
-        self,
-    ) -> None:
-        pass
+    def __init__(self, config: BaseDecimalTypeConfig) -> None:
+        self.config = config
+        self.alphabet = digits
 
 
 class BaseDateType:
     """Базовый класс date для генерации данных"""
 
-    def __init__(
-        self,
-    ) -> None:
-        pass
+    def __init__(self, config: BaseDateTypeConfig) -> None:
+        self.config = config
 
 
 class BaseTimestampType:
     """Базовый класс timestamp для генерации данных"""
 
-    def __init__(
-        self,
-    ) -> None:
-        pass
+    def __init__(self, config: BaseTimestampTypeConfig) -> None:
+        self.config = config

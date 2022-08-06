@@ -11,5 +11,5 @@ class StringEnum(str, Enum):
 class OutputTypes(StringEnum):
     """Список форматов для генерации"""
 
-    JSON = "JSON"
-    CSV = "CSV"
+    JSON = 'JSON'
+    CSV = 'CSV'
