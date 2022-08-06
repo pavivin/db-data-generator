@@ -3,8 +3,8 @@ from typing import Callable, Iterable
 
 from data.generate_type import CLASSES_TO_METHODS
 
-from . import models
-from . import constants
+from . import constants, models
+
 
 class TableDataGeneratorService:
     """Сервис для генерации данных"""
@@ -62,7 +62,7 @@ class TableDataGeneratorService:
         """Генерация шапки таблицы для csv"""
         header = '; '.join(col.column_name for col in config.columns)
 
-        return f'{header[:-1]}\n'
+        return f'{header}\n'
 
     def _generate_csv_row(self, config: models.TableBase) -> str:
         """Генерация csv строки"""
@@ -70,4 +70,4 @@ class TableDataGeneratorService:
             [str(self._generate_type[type(col.column_config)](col.column_config)) for col in config.columns]
         )
 
-        return row[:-1]
+        return row

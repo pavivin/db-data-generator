@@ -1,17 +1,26 @@
 {
   "tables": {
-    "tablename": {
+    "user": {
+      "rows_count": 1000,
       "name": {
-        "column_config": {
-          "values_select": [
-            {
-              "values_frequency": {
-                "value": ""
-              }
+        "values_select": [
+          {
+            "values_frequency": {
+              "value": "test"
             }
-          ],
-          "column_type": "str"
-        }
+          }
+        ],
+        "column_type": "str"
+      },
+      "user_id": {
+        "values_select": [
+          {
+            "values_frequency": {
+              "value": "test"
+            }
+          }
+        ],
+        "column_type": "str"
       }
     }
   }

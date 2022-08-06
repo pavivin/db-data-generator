@@ -6,19 +6,19 @@ from typing import Any, List, Optional
 from pydantic import BaseModel, Field
 
 
-class ValuesFrequencyConfig(BaseModel):
+class ValuesFrequency(BaseModel):
     """Модель конфигурации частоты встречаемых значений"""
 
     value: Any
     frequency: Optional[int] = Field(default=None, gt=0, le=10)
 
 
-class BaseStrTypeConfig(BaseModel):
+class BaseStrType(BaseModel):
     """Конфиг для базового типа строки"""
 
     faker_type: Optional[str]
 
-    values_select: Optional[List[ValuesFrequencyConfig]]
+    values_select: Optional[List[ValuesFrequency]]
 
     allowed_symbols: Optional[str]
     mask: Optional[str]
@@ -27,14 +27,15 @@ class BaseStrTypeConfig(BaseModel):
 
     min_length: Optional[int] = 1
     max_length: Optional[int] = 100
+    alphabet: str = printable
 
 
-class BaseIntTypeConfig(BaseModel):
+class BaseIntType(BaseModel):
     """Конфиг для базового типа целочисленного значения"""
 
     faker_type: Optional[str]
 
-    values_select: Optional[List[ValuesFrequencyConfig]]
+    values_select: Optional[List[ValuesFrequency]]
 
     mask: Optional[str]
 
@@ -42,14 +43,15 @@ class BaseIntTypeConfig(BaseModel):
 
     min_value: Optional[int] = -1000
     max_value: Optional[int] = 1000
+    alphabet: str = digits
 
 
-class BaseDecimalTypeConfig(BaseModel):
+class BaseDecimalType(BaseModel):
     """Конфиг для базового типа дробного значения"""
 
     faker_type: Optional[str]
 
-    values_select: Optional[List[ValuesFrequencyConfig]]
+    values_select: Optional[List[ValuesFrequency]]
 
     mask: Optional[str]
 
@@ -60,9 +62,10 @@ class BaseDecimalTypeConfig(BaseModel):
 
     min_fraction_numbers: Optional[int] = 0
     max_fraction_numbers: Optional[int] = 5
+    alphabet: str = digits
 
 
-class BaseDateTypeConfig(BaseModel):
+class BaseDateType(BaseModel):
     """Конфиг для базового типа дата"""
 
     DEFAULT_TYPE: str = 'date_between'
@@ -72,7 +75,7 @@ class BaseDateTypeConfig(BaseModel):
     end_date: Optional[date]
 
 
-class BaseTimestampTypeConfig(BaseModel):
+class BaseTimestampType(BaseModel):
     """Конфиг для базового типа дата/время"""
 
     DEFAULT_TYPE: str = 'date_time_between'
@@ -80,41 +83,3 @@ class BaseTimestampTypeConfig(BaseModel):
 
     start_date: Optional[date]
     end_date: Optional[date]
-
-
-class BaseStrType:
-    """Базовый класс str для генерации данных"""
-
-    def __init__(self, config: BaseStrTypeConfig) -> None:
-        self.config = config
-        self.alphabet = printable
-
-
-class BaseIntType:
-    """Базовый класс int для генерации данных"""
-
-    def __init__(self, config: BaseIntTypeConfig) -> None:
-        self.config = config
-        self.alphabet = digits
-
-
-class BaseDecimalType:
-    """Базовый класс decimal для генерации данных"""
-
-    def __init__(self, config: BaseDecimalTypeConfig) -> None:
-        self.config = config
-        self.alphabet = digits
-
-
-class BaseDateType:
-    """Базовый класс date для генерации данных"""
-
-    def __init__(self, config: BaseDateTypeConfig) -> None:
-        self.config = config
-
-
-class BaseTimestampType:
-    """Базовый класс timestamp для генерации данных"""
-
-    def __init__(self, config: BaseTimestampTypeConfig) -> None:
-        self.config = config
