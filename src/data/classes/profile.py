@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import date, datetime
 
 from .user import User
 
@@ -7,4 +8,4 @@ from .user import User
 class Profile:
     profile_id: int
     name: str
-    human_id: "User"
+    reg_date: date

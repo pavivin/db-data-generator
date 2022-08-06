@@ -4,6 +4,7 @@ from typing import Callable, Iterable
 from data.generate_type import CLASSES_TO_METHODS
 
 from . import constants, models
+from spark.init_spark import spark_session
 
 
 class TableDataGeneratorService:
@@ -41,6 +42,8 @@ class TableDataGeneratorService:
         with open(f'{config.table_name}.{config.output_format}', 'w') as file:
             file.write(result_data)
 
+        spark_session.create_data_frame_from_parquet(table_name=config.table_name, type=config.output_format)
+
     def _generate_output(self, work_func: Callable, config: models.TableBase) -> str:
         """Генерация данных построчно"""
         result_data = ''
@@ -52,8 +55,7 @@ class TableDataGeneratorService:
     def _generate_json_row(self, config: models.TableBase) -> dict:
         """Генерация json строки"""
         row = {
-            col.column_name: self._generate_type[type(col.column_config)](col.column_config)
-            for col in config.columns
+            col.column_name: self._generate_type[type(col.column_config)](col.column_config) for col in config.columns
         }
 
         return str(f'{dumps(row)},')

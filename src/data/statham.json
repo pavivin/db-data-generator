@@ -22,6 +22,39 @@
         ],
         "column_type": "str"
       }
+    },
+    "profile": {
+      "rows_count": 1000,
+      "profile_id": {
+        "values_select": [
+          {
+            "values_frequency": {
+              "value": "1"
+            }
+          }
+        ],
+        "column_type": "int"
+      },
+      "name": {
+        "values_select": [
+          {
+            "values_frequency": {
+              "value": "test"
+            }
+          }
+        ],
+        "column_type": "str"
+      },
+      "reg_date": {
+        "values_select": [
+          {
+            "values_frequency": {
+              "value": "2020-01-01"
+            }
+          }
+        ],
+        "column_type": "date"
+      }
     }
   }
 }

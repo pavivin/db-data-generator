@@ -4,8 +4,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from utils.base_types import (BaseDateType, BaseDecimalType, BaseIntType,
-                              BaseStrType, BaseTimestampType)
+from utils.base_types import BaseDateType, BaseDecimalType, BaseIntType, BaseStrType, BaseTimestampType
 
 from .constants import OutputTypes
 

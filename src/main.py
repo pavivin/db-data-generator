@@ -44,7 +44,7 @@ for table_name, table in config['tables'].items():
         TableBase(
             table_name=table_name,
             rows_to_generate=table['rows_count'],
-            output_format=OutputTypes.JSON,
+            output_format=OutputTypes.CSV,
             columns=_generate_columns(table, table_name),
         )
     )
@@ -56,3 +56,6 @@ start_date = datetime.now()
 generator.generate_table_data()
 
 print(datetime.now() - start_date)
+
+print('INFO: press Enter to continue')
+input()
