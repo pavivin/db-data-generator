@@ -1,4 +1,5 @@
 from datetime import datetime
+import time
 
 from data.classes import all_dataclasses
 from data.generate_type import HINTING_TO_CLASSES
@@ -68,7 +69,7 @@ def generate_data():
     print(datetime.now() - start_date)
 
     print('INFO: press Enter to continue')
-    input()
+    time.sleep(120)
 
 
 generate_data()

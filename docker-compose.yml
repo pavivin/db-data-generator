@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  data-generator:
+    container_name: data-geterator
+    image: data-hack:latest
+    ports:
+      - 8001:8001
+      - 4040:4040
+    volumes:
+      - ./src/data:/usr/app/src/data

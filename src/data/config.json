@@ -1,5 +1,5 @@
 {
-  "output_format": "json",
+  "output_format": "csv",
   "tables": {
     "user": {
       "rows_count": 1000,
