@@ -5,7 +5,7 @@ from pyspark.sql import SparkSession
 from data.generate_parquet import generate_parquet
 from utils.constants import OutputTypes
 
-
+from settings import OUTPUT_FOLDER
 os.environ['PYSPARK_PYTHON'] = 'C:/Users/ichetverikov/Desktop/data-hack/data-hack/env/Scripts/python.exe'
 
 
@@ -19,9 +19,9 @@ class SparkSessionService:
         """Создание дата фрейма из паркета"""
         generate_parquet(table_name=table_name, type=type)
 
-        parq = self.spark.read.parquet(f'{table_name}.parquet')
+        parq = self.spark.read.parquet(f'{OUTPUT_FOLDER}/{table_name}.parquet')
         parq.createOrReplaceTempView(f'{table_name}')
         self.spark.sql(f'select * from {table_name}').show(1000, False)
 
 
-spark_session = SparkSessionService()
+# spark_session = SparkSessionService()

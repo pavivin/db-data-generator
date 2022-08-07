@@ -1,3 +1,4 @@
 Faker
 pydantic
 orjson
+pyspark

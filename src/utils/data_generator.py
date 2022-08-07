@@ -2,9 +2,10 @@ from json import dumps
 from typing import Callable, Iterable
 
 from data.generate_type import CLASSES_TO_METHODS
+from settings import OUTPUT_FOLDER
 
 from . import constants, models
-from spark.init_spark import spark_session
+from spark.init_spark import SparkSessionService
 
 
 class TableDataGeneratorService:
@@ -15,12 +16,13 @@ class TableDataGeneratorService:
     ) -> None:
         self._config_list = config
         self._generate_type = generate_type
+        self._spark_session = SparkSessionService()
 
     def generate_table_data(self) -> None:
         for config in self._config_list:
             self._generate_table_data(config)
 
-    def _generate_table_data(self, config: models.TableBase) -> None:
+    def _generate_table_data(self, config: models.TableBase, is_spark=True) -> None:
         """Генерация данных для таблицы"""
         if config.output_format == constants.OutputTypes.JSON:
             work_func = self._generate_json_row
@@ -39,10 +41,11 @@ class TableDataGeneratorService:
             result_data = self._generate_csv_header(config)
             result_data += self._generate_output(work_func=work_func, config=config)
 
-        with open(f'{config.table_name}.{config.output_format}', 'w') as file:
+        with open(f'{OUTPUT_FOLDER}/{config.table_name}.{config.output_format}', 'w') as file:
             file.write(result_data)
 
-        spark_session.create_data_frame_from_parquet(table_name=config.table_name, type=config.output_format)
+        if is_spark:
+            self._spark_session.create_data_frame_from_parquet(table_name=config.table_name, type=config.output_format)
 
     def _generate_output(self, work_func: Callable, config: models.TableBase) -> str:
         """Генерация данных построчно"""

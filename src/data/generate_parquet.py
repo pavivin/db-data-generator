@@ -4,11 +4,12 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from utils.constants import OutputTypes
+from settings import OUTPUT_FOLDER
 
 
 def generate_parquet(table_name: str, type: OutputTypes) -> None:
     """Генерация паркета на пол"""
-    df = pd.read_csv(f'{table_name}.{type}')
+    df = pd.read_csv(f'{OUTPUT_FOLDER}/{table_name}.{type}')
     table = pa.Table.from_pandas(df)
 
-    pq.write_table(table, f'{table_name}.parquet')
+    pq.write_table(table, f'{OUTPUT_FOLDER}/{table_name}.parquet')

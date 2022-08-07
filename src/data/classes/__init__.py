@@ -5,3 +5,5 @@ __all__ = (
     'Profile',
     'User',
 )
+
+all_dataclasses = __all__
