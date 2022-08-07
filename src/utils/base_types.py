@@ -26,7 +26,7 @@ class BaseStrType(BaseModel):
     unique: bool = False
 
     min_length: Optional[int] = 1
-    max_length: Optional[int] = 100
+    max_length: Optional[int] = 50
     alphabet: str = ascii_letters + digits
 
 
