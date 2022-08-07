@@ -9,8 +9,7 @@
               "value": "test"
             }
           }
-        ],
-        "column_type": "str"
+        ]
       },
       "user_id": {
         "values_select": [

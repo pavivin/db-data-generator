@@ -131,4 +131,6 @@ dmypy.json
 kek.txt
 people.*
 user.*
-=data/output/*.
+data/output/*.csv
+data/output/*.parquet
+data/output/*.json
