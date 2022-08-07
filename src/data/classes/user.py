@@ -5,3 +5,4 @@ from dataclasses import dataclass
 class User:
     user_id: int
     name: str
+    code: str

@@ -16,7 +16,7 @@ spark_session.spark.sql(f'select * from {table_name}').show(1000, False)
 
 Web ui: `127.0.0.1:4040`
 
-# Структура проекта
+## Структура проекта
 
 src/data/classes - папка с датаклассами
 
@@ -26,9 +26,15 @@ data/output - выходные данные в виде JSON / CSV и parquet
 
 src/main.py - запуск проекта
 
-# Заполнение данных
+## Заполнение данных
 
 ## config.json
+
+Если колонка без настроек, то её можно указать как:
+
+```json
+"column": {}
+```
 
 ```json
 {
@@ -62,11 +68,12 @@ src/main.py - запуск проекта
   }
 }
 ```
+
 ## Датаклассы
 
 Датаклассы соотносятся с названием в json через преоразование snake_case в json в PascalCase в названии класса
 
-например: test_name (config.json) -> TestName (classes/test_name.py) 
+например: test_name (config.json) -> TestName (classes/test_name.py)
 
 ```python
 from dataclasses import dataclass
@@ -77,7 +84,9 @@ class User:
     user_id: int
     name: str
 ```
+
 Чтобы обращение по датаклассам было быстрее можно использовать атрибут slots
+
 ```python
 from dataclasses import dataclass
 
@@ -89,6 +98,7 @@ class User:
 ```
 
 ## Запуск (Python)
+
 ```bash
 python -m venv env
 source env/bin/activate (Linux)
