@@ -55,7 +55,7 @@ def generate_data():
             TableBase(
                 table_name=class_name,
                 rows_to_generate=rows_count,
-                output_format=OutputTypes.JSON,
+                output_format=config['output_format'],
                 columns=_generate_columns(table_name, table_class),
             )
         )

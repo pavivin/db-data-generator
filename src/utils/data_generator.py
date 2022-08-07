@@ -41,6 +41,9 @@ class TableDataGeneratorService:
             result_data = self._generate_csv_header(config)
             result_data += self._generate_output(work_func=work_func, config=config)
 
+        else:
+            raise RuntimeError(f'Некорректный тип вывода: {config.output_format}, корректные: {constants.OutputTypes.__dict__}')
+
         with open(f'{OUTPUT_FOLDER}/{config.table_name}.{config.output_format}', 'w') as file:
             file.write(result_data)
 
