@@ -100,7 +100,7 @@ python main.py
 ## Запуск (Docker)
 
 ```bash
-docker-compose up --build
+docker build -t data-hack:latest .
 ```
 
 ## Запуск тестов
