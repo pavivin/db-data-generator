@@ -79,7 +79,7 @@ class TableDataGeneratorService:
     def _generate_csv_row(self, config: models.TableBase) -> str:
         """Генерация csv строки"""
         row = '; '.join(
-            [str(self._generate_type[type(col.column_config)]()) for col in config.columns]
+            [str(self._generate_type[type(col.column_config)](col.column_config)) for col in config.columns]
         )
 
         return row

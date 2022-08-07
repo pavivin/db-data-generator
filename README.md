@@ -107,4 +107,6 @@ docker-compose up --build
 
 ```bash
 python -m pytest tests/
+# или
+env/bin/python -m pytest tests/
 ```
