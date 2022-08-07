@@ -72,7 +72,7 @@ class TypeGenerator:
             return str(generated_value)
 
         else:
-            return str(Decimal(random.randrange(155, 389)) / 100)
+            return str(Decimal(random.randrange(-151, 12389)) / 100)
 
     @staticmethod
     def generate_fake_date_data(row_config: base_types.BaseDateType) -> date:
