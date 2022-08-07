@@ -33,7 +33,7 @@ class BaseStrType(BaseModel):
 class BaseIntType(BaseModel):
     """Конфиг для базового типа целочисленного значения"""
 
-    faker_type: Optional[str]
+    faker_type: Optional[str] 
 
     values_select: Optional[List[ValuesFrequency]]
 

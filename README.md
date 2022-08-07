@@ -26,3 +26,85 @@ data/output - выходные данные в виде JSON / CSV и parquet
 
 src/main.py - запуск проекта
 
+# Заполнение данных
+
+## config.json
+
+```json
+{
+  "output_format": "json", // выходной формат - json / csv
+  "tables": {
+    // таблицы
+    "user": {
+      // название таблицы
+      "rows_count": 1000, // количество генерируемых строк
+      "name": { // название колонки
+        "values_select": [
+          // массив возможных значений
+          {
+            "values_frequency": {
+              "value": "test", // значение
+              "frequency": 100 // частота
+            }
+          }
+        ]
+      },
+      "user_id": {
+        "values_select": [
+          {
+            "values_frequency": {
+              "value": "test"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+## Датаклассы
+
+Датаклассы соотносятся с названием в json через преоразование snake_case в json в PascalCase в названии класса
+
+например: test_name (config.json) -> TestName (classes/test_name.py) 
+
+```python
+from dataclasses import dataclass
+
+
+@dataclass(slots=True, frozen=True)
+class User:
+    user_id: int
+    name: str
+```
+Чтобы обращение по датаклассам было быстрее можно использовать атрибут slots
+```python
+from dataclasses import dataclass
+
+
+@dataclass(slots=True, frozen=True)
+class User:
+    user_id: int
+    name: str
+```
+
+## Запуск (Python)
+```bash
+python -m venv env
+source env/bin/activate (Linux)
+env/bin/activate.ps1 (Windows)
+pip install requirements.min.txt
+python main.py
+```
+
+## Запуск (Docker)
+
+```bash
+docker-compose up --build
+```
+
+## Запуск тестов
+
+```bash
+python -m pytest tests/
+```

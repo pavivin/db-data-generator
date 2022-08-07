@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from decimal import Decimal
-from typing import List
+from typing import Any, List
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ class TableColumn(BaseModel):
         arbitrary_types_allowed = True
 
     column_name: str
-    column_config: AVAILABLE_TYPES_CLASSES
+    column_config: Any
     values: list[AVAILABLE_TYPES_HINTING] | None
 
 
