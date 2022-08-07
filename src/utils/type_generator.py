@@ -16,7 +16,6 @@ class TypeGenerator:
     def generate_fake_str_data(row_config: base_types.BaseStrType) -> str:
         """Генерация строки по конфигурации"""
         if row_config.faker_type:
-            print('faker')
             pass  # TODO: генерация с помощью faker
             return
 
@@ -42,7 +41,6 @@ class TypeGenerator:
         """Генерация целочисленного значения по конфигурации"""
 
         if row_config.faker_type:
-            print('faker')
             pass  # TODO: генерация с помощью faker
             return
 
@@ -62,7 +60,6 @@ class TypeGenerator:
         """Генерация дробного значения по конфигурации"""
 
         if row_config.faker_type:
-            print('faker')
             pass  # TODO: генерация с помощью faker
             return
 

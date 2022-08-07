@@ -40,13 +40,21 @@ def _get_json_table_data(table_name: str):
 
 def _generate_columns(class_name: str, table_class: type):
     columns = []
-    table_name = pascal_to_snake(class_name)
     json_table_data = _get_json_table_data(table_name)
     for column_name, column_type in table_class.__annotations__.items():
+        values_select = json_table_data[column_name]['values_select']
         columns.append(
             TableColumn(
                 column_name=column_name,
-                column_config=HINTING_TO_CLASSES[column_type.__name__](**json_table_data[column_name]),
+                column_config=HINTING_TO_CLASSES[column_type.__name__](
+                    values_select=[
+                        base_types.ValuesFrequency(
+                            value=item['values_frequency']['value'],
+                            frequency=item['values_frequency'].get('frequency'),
+                        )
+                        for item in values_select
+                    ]
+                ),
             )
         )
     return columns
@@ -68,6 +76,7 @@ tables = []
 
 for class_name in all_dataclasses:
     try:
+        table_name = pascal_to_snake(class_name)
         table_class = str_to_class(class_name)
     except AttributeError as e:
         raise RuntimeError(f'Таблица {e.name} не найдена')
@@ -75,9 +84,8 @@ for class_name in all_dataclasses:
     tables.append(
         TableBase(
             table_name=class_name,
-            # rows_to_generate=table['rows_count'],
+            rows_to_generate=config['tables'][table_name].get('rows_count'),
             output_format=OutputTypes.CSV,
-            # columns=_generate_columns(table_class),
             columns=_generate_columns(class_name, table_class),
         )
     )
