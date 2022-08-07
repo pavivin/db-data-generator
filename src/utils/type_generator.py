@@ -32,7 +32,7 @@ class TypeGenerator:
 
         else:
             return ''.join(
-                random.choice(string.ascii_uppercase + string.digits)
+                random.choice(row_config.alphabet)
                 for _ in range(random.choice(range(row_config.min_length, row_config.max_length)))
             )
 

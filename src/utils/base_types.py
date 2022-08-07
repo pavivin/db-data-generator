@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from decimal import Decimal
-from string import digits, printable
+from string import digits, ascii_letters
 from typing import Any, List, Optional
 
 from pydantic import BaseModel, Field
@@ -27,13 +27,13 @@ class BaseStrType(BaseModel):
 
     min_length: Optional[int] = 1
     max_length: Optional[int] = 100
-    alphabet: str = printable
+    alphabet: str = ascii_letters + digits
 
 
 class BaseIntType(BaseModel):
     """Конфиг для базового типа целочисленного значения"""
 
-    faker_type: Optional[str] 
+    faker_type: Optional[str]
 
     values_select: Optional[List[ValuesFrequency]]
 

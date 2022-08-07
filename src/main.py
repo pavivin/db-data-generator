@@ -45,11 +45,13 @@ def _generate_columns(table_name: str, table_class: type):
     json_table_data = config['tables'].get(table_name, {})
     for column_name, column_type in table_class.__annotations__.items():
         column_data = json_table_data.get(column_name)
+
+        column_ = TableColumn(
+            column_name=column_name,
+            column_config=HINTING_TO_CLASSES[column_type.__name__](),
+        )
+
         if column_data:
-            column_ = TableColumn(
-                column_name=column_name,
-                column_config=HINTING_TO_CLASSES[column_type.__name__](),
-            )
 
             if 'values_select' in column_data:
                 column_.column_config.values_select = [
@@ -84,7 +86,7 @@ def _generate_columns(table_name: str, table_class: type):
             if 'end_date' in column_data:
                 column_.column_config.end_date = datetime.strptime(column_data['end_date'], '%Y/%m/%d')
 
-            columns.append(column_)
+        columns.append(column_)
 
     return columns
 
