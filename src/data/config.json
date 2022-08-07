@@ -7,11 +7,20 @@
         "values_select": [
           {
             "values_frequency": {
-              "value": "test"
+              "value": "test1"
+            }
+          },
+          {
+            "values_frequency": {
+              "value": "test2"
+            }
+          },
+          {
+            "values_frequency": {
+              "value": "test3"
             }
           }
-        ],
-        "column_type": "str"
+        ]
       },
       "user_id": {
         "values_select": [
@@ -20,8 +29,7 @@
               "value": "test"
             }
           }
-        ],
-        "column_type": "str"
+        ]
       }
     },
     "profile": {
@@ -33,8 +41,7 @@
               "value": "1"
             }
           }
-        ],
-        "column_type": "int"
+        ]
       },
       "name": {
         "values_select": [
@@ -43,18 +50,11 @@
               "value": "test"
             }
           }
-        ],
-        "column_type": "str"
+        ]
       },
       "reg_date": {
-        "values_select": [
-          {
-            "values_frequency": {
-              "value": "2020-01-01"
-            }
-          }
-        ],
-        "column_type": "date"
+        "start_date": "2020/1/1",
+        "end_date": "2022/1/1"
       }
     }
   }

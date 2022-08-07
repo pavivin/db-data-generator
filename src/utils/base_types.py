@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal
 from string import digits, printable
 from typing import Any, List, Optional
@@ -81,5 +81,5 @@ class BaseTimestampType(BaseModel):
     DEFAULT_TYPE: str = 'date_time_between'
     faker_type: str = DEFAULT_TYPE
 
-    start_date: Optional[date]
-    end_date: Optional[date]
+    start_date: Optional[datetime]
+    end_date: Optional[datetime]

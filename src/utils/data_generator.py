@@ -31,7 +31,7 @@ class TableDataGeneratorService:
 
             for i in range(1, 7):
                 if result_data[len(result_data) - i] == ',':
-                    result_data = result_data[:len(result_data) - i] + result_data[len(result_data) - i + 1 :]
+                    result_data = result_data[: len(result_data) - i] + result_data[len(result_data) - i + 1 :]
                     break
 
         elif config.output_format == constants.OutputTypes.CSV:
