@@ -45,7 +45,7 @@ class TableDataGeneratorService:
             file.write(result_data)
 
         if is_spark:
-            self._spark_session.create_data_frame_from_parquet(table_name=config.table_name, type=config.output_format)
+            self._spark_session.create_data_frame_from_parquet(table_name=config.table_name, output_type=config.output_format)
 
     def _generate_output(self, work_func: Callable, config: models.TableBase) -> str:
         """Генерация данных построчно"""

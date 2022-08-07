@@ -2,3 +2,5 @@ Faker
 pydantic
 orjson
 pyspark
+pyarrow
+pandas

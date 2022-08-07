@@ -15,9 +15,9 @@ class SparkSessionService:
     def __init__(self) -> None:
         self.spark = SparkSession.builder.master("local[1]").appName("Spark").getOrCreate()
 
-    def create_data_frame_from_parquet(self, table_name: str, type: OutputTypes) -> None:
+    def create_data_frame_from_parquet(self, table_name: str, output_type: OutputTypes) -> None:
         """Создание дата фрейма из паркета"""
-        generate_parquet(table_name=table_name, type=type)
+        generate_parquet(table_name=table_name, output_type=output_type)
 
         parq = self.spark.read.parquet(f'{OUTPUT_FOLDER}/{table_name}.parquet')
         parq.createOrReplaceTempView(f'{table_name}')

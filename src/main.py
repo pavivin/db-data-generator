@@ -4,12 +4,12 @@ from datetime import datetime
 from data.generate_type import HINTING_TO_CLASSES
 from settings import JSON_CONFIG_PATH
 from utils import base_types, data_generator
-from utils.base import pascal_to_snake, read_json_file, snake_to_pascal, str_to_class, get_props
+from utils.base import pascal_to_snake, read_json_file, str_to_class
 from utils.constants import OutputTypes
 from utils.models import TableBase, TableColumn
 
 def _get_json_table_data(table_name: str):
-    return config['tables'].get(table_name)
+    return config['tables'].get(table_name, {})
 
 
 def _generate_columns(table_name: str, table_class: type):
@@ -62,8 +62,8 @@ for class_name in all_dataclasses:
         TableBase(
             table_name=class_name,
             rows_to_generate=rows_count,
-            output_format=OutputTypes.CSV,
-            columns=_generate_columns(class_name, table_class),
+            output_format=OutputTypes.JSON,
+            columns=_generate_columns(table_name, table_class),
         )
     )
 
