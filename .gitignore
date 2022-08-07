@@ -131,4 +131,4 @@ dmypy.json
 kek.txt
 people.*
 user.*
-data/output/*
+=data/output/*.
